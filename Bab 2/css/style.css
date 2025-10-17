@@ -1,0 +1,321 @@
+/* AGRISOB - style.css (Original Green Theme with New Layout Support) */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@500;700&display=swap');
+
+:root {
+  --primary-color: #2f855a;
+  --primary-color-dark: #276f49;
+  --text-dark: #111;
+  --text-light: #666;
+  --white-color: #ffffff;
+  --border-color: #d1d5db;
+  --shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.container {
+  width: 85%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* === Navbar === */
+nav {
+  display: flex;
+  height: 80px;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+nav .logo img {
+  vertical-align: middle;
+}
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  align-items: center;
+}
+nav ul li {
+  margin: 0 10px;
+}
+nav ul li a {
+  color: var(--text-dark);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 8px 15px;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+}
+nav ul li a.active,
+nav ul li a:hover {
+  color: var(--primary-color);
+}
+nav ul li a.btn_login {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+}
+nav ul li a.btn_login:hover {
+  background-color: var(--primary-color-dark);
+  color: var(--white-color);
+}
+nav .menu-btn i {
+  color: #000;
+  font-size: 22px;
+  cursor: pointer;
+  display: none;
+}
+input[type="checkbox"] {
+  display: none;
+}
+
+/* === NEW LAYOUT: Jumbotron with Background Image === */
+.jumbotron-bg {
+    position: relative;
+    height: 400px;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--white-color);
+    margin-bottom: 50px;
+}
+.jumbotron-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/hero.png');
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.4);
+    z-index: 1;
+}
+.jumbotron-text {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+    padding: 20px;
+}
+.jumbotron-text h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+}
+.jumbotron-text p {
+    margin: 15px 0 25px;
+    font-size: 1.1rem;
+}
+.btn_getStarted {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--white-color);
+    color: var(--primary-color);
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+.btn_getStarted:hover {
+    transform: scale(1.05);
+}
+
+
+/* === Card Categories (Original Style) === */
+.cards-categories {
+  text-align: center;
+  margin-bottom: 50px;
+}
+.cards-categories h2 {
+  font-family: "Roboto", sans-serif;
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+.card-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+.card {
+  box-shadow: var(--shadow-soft);
+  border-radius: 15px;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  text-align: left;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+.card .card-image img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+.card-content {
+  padding: 20px;
+}
+.card-content h5 {
+  margin-bottom: 10px;
+  font-family: "Roboto", sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+.card-content p.description {
+  font-size: 14px;
+  color: var(--text-light);
+  margin-bottom: 15px;
+  min-height: 40px;
+}
+.card-content p.price {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 15px;
+}
+.card .btn_belanja {
+  background-color: var(--primary-color);
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  color: white;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+.card .btn_belanja:hover {
+  background-color: var(--primary-color-dark);
+}
+
+/* === Footer === */
+footer {
+  text-align: center;
+  margin: 50px 0 20px;
+  color: var(--text-light);
+}
+
+/* === NEW LAYOUT: Login/Register Page === */
+.auth-wrapper {
+    display: flex;
+    min-height: calc(100vh - 160px); /* Full height minus header/footer */
+    align-items: center;
+    justify-content: center;
+}
+.auth-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    max-width: 900px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    border-radius: 12px;
+    overflow: hidden;
+}
+.auth-panel {
+    padding: 50px;
+}
+.auth-panel.left-panel {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+.auth-panel.left-panel h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+.auth-panel.right-panel {
+    background-color: var(--white-color);
+}
+.form-container {
+  width: 100%;
+  text-align: center;
+}
+.form-container h3 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: var(--text-dark);
+}
+.form-container .input {
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.form-container .input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(47, 133, 90, 0.2);
+}
+.form-container .btn_login {
+  background-color: var(--primary-color);
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  color: var(--white-color);
+  font-size: 16px;
+  font-weight: 600;
+}
+.form-container .btn_login:hover {
+  background-color: var(--primary-color-dark);
+}
+.form-container .link-register {
+  display: block;
+  text-decoration: none;
+  margin-top: 15px;
+  color: var(--primary-color);
+}
+.form-container .link-register:hover {
+  text-decoration: underline;
+}
+
+/* === Responsive === */
+@media screen and (max-width: 768px) {
+  /* Navbar Responsive */
+  nav .menu-btn i { display: block; }
+  #click:checked ~ .menu-btn i:before { content: "\f00d"; }
+  nav ul {
+    position: absolute;
+    top: 80px;
+    left: -100%;
+    background: var(--white-color);
+    box-shadow: var(--shadow-soft);
+    width: 100%;
+    text-align: center;
+    display: block;
+    transition: all 0.3s ease;
+    border-radius: 0 0 10px 10px;
+    padding-bottom: 20px;
+    z-index: 999;
+  }
+  #click:checked ~ ul { left: 0; }
+  nav ul li { width: 100%; margin: 20px 0; }
+  
+  /* Auth page responsive */
+  .auth-container {
+      grid-template-columns: 1fr;
+  }
+  .auth-panel.left-panel {
+      display: none; /* Hide decorative panel on mobile */
+  }
+}

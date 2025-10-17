@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="../assets/logo.png" />
+  <link rel="stylesheet" href="../css/admin.css" />
+  <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agrisob Admin | Categories</title>
+</head>
+<body>
+  <div class="sidebar">
+    <div class="logo-details">
+      <i class='bx bxs-dashboard'></i>
+      <span class="logo_name">Agrisob</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="../admin.html"><i class="bx bx-grid-alt"></i><span class="links_name">Dashboard</span></a></li>
+      <li><a href="categories.html" class="active"><i class="bx bx-box"></i><span class="links_name">Categories</span></a></li>
+      <li><a href="../transaction/transaction.html"><i class="bx bx-list-ul"></i><span class="links_name">Transaction</span></a></li>
+      <li><a href="../login.html"><i class="bx bx-log-out"></i><span class="links_name">Log out</span></a></li>
+    </ul>
+  </div>
+  <section class="home-section">
+    <nav>
+      <div class="sidebar-button"><i class="bx bx-menu sidebarBtn"></i></div>
+      <div class="profile-details"><span class="admin_name">Agrisob Admin</span></div>
+    </nav>
+    <div class="home-content">
+      <div class="card">
+        <div class="card-header">
+          <h3>Data Komoditas</h3>
+          <a href="categories-entry.html" class="btn btn-tambah"><i class='bx bx-plus'></i>Tambah Data</a>
+        </div>
+        <div class="item-list">
+          <div class="item">
+            <div class="item-img"><img src="../assets/gambar1.png" alt="Padi"></div>
+            <div class="item-details">
+              <h5>Padi IR64</h5>
+              <p>Varietas padi unggul untuk daerah subur.</p>
+              <p class="price">Rp 12,000 / kg</p>
+            </div>
+            <div class="action-buttons">
+              <button class="btn-edit"><i class='bx bxs-pencil'></i>Edit</button>
+              <button class="btn-delete"><i class='bx bxs-trash'></i>Hapus</button>
+            </div>
+          </div>
+          <div class="item">
+            <div class="item-img"><img src="../assets/gambar2.png" alt="Jagung"></div>
+            <div class="item-details">
+              <h5>Jagung Manis</h5>
+              <p>Komoditas lahan dengan nilai jual tinggi.</p>
+              <p class="price">Rp 8,000 / kg</p>
+            </div>
+            <div class="action-buttons">
+              <button class="btn-edit"><i class='bx bxs-pencil'></i>Edit</button>
+              <button class="btn-delete"><i class='bx bxs-trash'></i>Hapus</button>
+            </div>
+          </div>
+          <div class="item">
+            <div class="item-img"><img src="../assets/gambar3.png" alt="Cabai"></div>
+            <div class="item-details">
+              <h5>Cabai Merah Keriting</h5>
+              <p>Komoditas hortikultura bernilai ekonomi tinggi.</p>
+              <p class="price">Rp 30,000 / kg</p>
+            </div>
+            <div class="action-buttons">
+              <button class="btn-edit"><i class='bx bxs-pencil'></i>Edit</button>
+              <button class="btn-delete"><i class='bx bxs-trash'></i>Hapus</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script>
+    let sidebar = document.querySelector(".sidebar");
+    let sidebarBtn = document.querySelector(".sidebarBtn");
+    sidebarBtn.onclick = () => sidebar.classList.toggle("active");
+  </script>
+</body>
+</html>
