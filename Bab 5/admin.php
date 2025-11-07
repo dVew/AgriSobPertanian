@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="assets/logo.png" />
+  <link rel="stylesheet" href="css/admin.css" />
+  <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agrisob Admin</title>
+</head>
+
+<body>
+  <div class="sidebar">
+    <div class="logo-details">
+      <i class='bx bxs-dashboard'></i>
+      <span class="logo_name">Agrisob</span>
+    </div>
+    <ul class="nav-links">
+      <li>
+        <a href="admin.php" class="active">
+          <i class="bx bx-grid-alt"></i>
+          <span class="links_name">Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <a href="categories/categories.php">
+          <i class="bx bx-box"></i>
+          <span class="links_name">Categories</span>
+        </a>
+      </li>
+      <li>
+        <a href="transactions/transactions.php">
+          <i class="bx bx-list-ul"></i>
+          <span class="links_name">Transaction</span>
+        </a>
+      </li>
+      <li>
+        <a href="login.php">
+          <i class="bx bx-log-out"></i>
+          <span class="links_name">Log out</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <section class="home-section">
+    <nav>
+      <div class="sidebar-button">
+        <i class="bx bx-menu sidebarBtn"></i>
+      </div>
+      <div class="clock-container" id="realtime-clock">--:--:--</div>
+      <div class="profile-details">
+        <span class="admin_name" id="admin-name">Agrisob Admin</span>
+        <i class='bx bxs-edit-alt edit-admin-btn' onclick="editAdminName()"></i>
+      </div>
+    </nav>
+    <div class="home-content">
+      <div class="stat-cards-grid">
+        <div class="stat-card">
+          <div class="icon"><i class='bx bxs-box'></i></div>
+          <div class="info">
+            <h4 id="total-commodities">...</h4>
+            <p>Total Komoditas</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="icon"><i class='bx bxs-wallet'></i></div>
+          <div class="info">
+            <h4>12</h4>
+            <p>Total Transaksi</p>
+          </div>
+        </div>
+        <div class="stat-card">
+            <div class="icon"><i class='bx bxs-user-check'></i></div>
+            <div class="info">
+              <h4>5</h4>
+              <p>Petani Terdaftar</p>
+            </div>
+          </div>
+      </div>
+      <div class="card">
+        <h1>Selamat Datang, <span id="welcome-name">Admin</span>!</h1>
+        <p>Gunakan menu navigasi di sebelah kiri untuk mengelola data komoditas dan transaksi panen.</p>
+      </div>
+    </div>
+  </section>
+  <script>
+    let sidebar = document.querySelector(".sidebar");
+    let sidebarBtn = document.querySelector(".sidebarBtn");
+    sidebarBtn.onclick = function () {
+      sidebar.classList.toggle("active");
+    };
+
+    function startRealtimeClock() {
+      const clockElement = document.getElementById('realtime-clock');
+      function updateClock() {
+        const now = new Date();
+        let h = now.getHours(), m = now.getMinutes(), s = now.getSeconds();
+        h = (h < 10) ? "0" + h : h;
+        m = (m < 10) ? "0" + m : m;
+        s = (s < 10) ? "0" + s : s;
+        clockElement.innerHTML = h + ":" + m + ":" + s;
+      }
+      updateClock();
+      setInterval(updateClock, 1000);
+    }
+
+    const adminNameElement = document.getElementById('admin-name');
+    const welcomeNameElement = document.getElementById('welcome-name');
+
+    function loadAdminName() {
+      let savedName = localStorage.getItem('agrisobAdminName');
+      if (savedName) {
+        adminNameElement.textContent = savedName;
+        welcomeNameElement.textContent = savedName;
+      }
+    }
+    
+    function editAdminName() {
+      let currentName = adminNameElement.textContent;
+      let newName = prompt("Masukkan nama admin baru:", currentName);
+      if (newName && newName.trim() !== "") {
+        localStorage.setItem('agrisobAdminName', newName);
+        adminNameElement.textContent = newName;
+        welcomeNameElement.textContent = newName;
+      }
+    }
+
+    function fetchCommodityCount() {
+        fetch('data/commodities.json') 
+            .then(response => response.json()) 
+            .then(data => {
+                document.getElementById('total-commodities').textContent = data.length;
+            })
+            .catch(error => {
+                console.error('Error fetching commodities:', error);
+                document.getElementById('total-commodities').textContent = 'N/A';
+            });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        loadAdminName();
+        startRealtimeClock();
+        fetchCommodityCount();
+    });
+  </script>
+</body>
+</html>

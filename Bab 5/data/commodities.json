@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Padi IR64",
+    "description": "Varietas padi unggul untuk daerah subur.",
+    "price": "Rp 12,000 / kg",
+    "image": "../assets/gambar1.png"
+  },
+  {
+    "name": "Jagung Manis",
+    "description": "Komoditas lahan dengan nilai jual tinggi.",
+    "price": "Rp 8,000 / kg",
+    "image": "../assets/gambar2.png"
+  },
+  {
+    "name": "Cabai Merah Keriting",
+    "description": "Komoditas hortikultura bernilai ekonomi tinggi.",
+    "price": "Rp 30,000 / kg",
+    "image": "../assets/gambar3.png"
+  },
+  {
+    "name": "Bawang Merah",
+    "description": "Komoditas bumbu utama, sangat dibutuhkan pasar.",
+    "price": "Rp 25,000 / kg",
+    "image": "../assets/gambar4.png" 
+  }
+]

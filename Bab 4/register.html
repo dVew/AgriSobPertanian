@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <title>Register — Agrisob</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="assets/logo.png" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&family=Roboto:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <nav>
+        <div class="logo">
+          <a href="index.html"><img src="assets/logo.png" alt="Agrisob logo" style="height:64px" /></a>
+        </div>
+        <input type="checkbox" id="click" />
+        <label for="click" class="menu-btn">
+          <i class="fas fa-bars"></i>
+        </label>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="login.html" class="btn_login">Login</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+        <div class="auth-wrapper">
+            <div class="auth-container">
+                <div class="auth-panel left-panel">
+                    <h2>Bergabung dengan Agrisob</h2>
+                    <p>Daftarkan diri Anda dan mulailah digitalisasi pertanian hari ini.</p>
+                </div>
+                <div class="auth-panel right-panel">
+                    <div class="form-container">
+                        <h3>Buat Akun Baru</h3>
+                        <form action="login.html">
+                            <input class="input" type="email" name="email" placeholder="Email" required />
+                            <input class="input" type="text" name="username" placeholder="Username" required />
+                            <input class="input" type="password" name="password" placeholder="Password" required />
+                            <button type="submit" class="btn_login" name="register">Register</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+      <h4>&copy; Agrisob 2025</h4>
+    </footer>
+  </div>
+</body>
+</html>

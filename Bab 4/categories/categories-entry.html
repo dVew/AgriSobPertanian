@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="../assets/logo.png" />
+  <link rel="stylesheet" href="../css/admin.css" />
+  <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agrisob Admin | Categories Entry</title>
+</head>
+
+<body>
+  <div class="sidebar">
+    <div class="logo-details"><i class='bx bxs-dashboard'></i><span class="logo_name">Agrisob</span></div>
+    <ul class="nav-links">
+      <li><a href="../admin.html"><i class="bx bx-grid-alt"></i><span class="links_name">Dashboard</span></a></li>
+      <li><a href="../categories/categories.html" class="active"><i class="bx bx-box"></i><span class="links_name">Categories</span></a></li>
+      <li><a href="../transactions/transactions.html"><i class="bx bx-list-ul"></i><span class="links_name">Transaction</span></a></li>
+      <li><a href="../login.html"><i class="bx bx-log-out"></i><span class="links_name">Log out</span></a></li>
+    </ul>
+  </div>
+  <section class="home-section">
+    <nav>
+      <div class="sidebar-button"><i class="bx bx-menu sidebarBtn"></i></div>
+      <div class="profile-details"><span class="admin_name" id="admin-name">Agrisob Admin</span></div>
+    </nav>
+    <div class="home-content">
+      <div class="card">
+        <div class="card-header">
+            <h3 id="form-title">Input Komoditas Baru</h3> </div>
+        <form class="form-grid" onsubmit="event.preventDefault(); saveForm();">
+          <div class="form-group">
+            <label for="categories">Nama Komoditas</label>
+            <input class="input" type="text" name="categories" id="categories" placeholder="Contoh: Padi IR64" />
+            <div id="category-validation" class="validation-message"></div>
+          </div>
+          <div class="form-group">
+            <label for="price">Harga (per kg)</label>
+            <input class="input" type="number" name="price" id="price" placeholder="Contoh: 12000" />
+          </div>
+          <div class="form-group">
+            <label for="description">Deskripsi</label>
+            <input class="input" type="text" name="description" id="description" placeholder="Deskripsi singkat komoditas" />
+          </div>
+          <div class="form-group">
+            <label for="photo">Photo</label>
+            <input type="file" name="photo" id="photo" />
+          </div>
+          <button type="submit" class="btn btn-simpan" name="simpan"><i class='bx bxs-save'></i>Simpan</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // toggle sidebar
+    let sidebar = document.querySelector(".sidebar");
+    let sidebarBtn = document.querySelector(".sidebarBtn");
+    sidebarBtn.onclick = () => sidebar.classList.toggle("active");
+
+    // Web Storage (untuk menampilkan nama) 
+    const adminNameElement = document.getElementById('admin-name');
+    document.addEventListener('DOMContentLoaded', () => {
+      let savedName = localStorage.getItem('agrisobAdminName');
+      if (savedName) {
+        adminNameElement.textContent = savedName;
+      }
+    });
+
+    // (onchange) 
+    const categoryInput = document.getElementById('categories');
+    const validationMessage = document.getElementById('category-validation');
+
+    // Event 'change' aktif setelah user klik di luar input field
+    categoryInput.addEventListener('change', function() {
+      let inputValue = categoryInput.value;
+      if(inputValue.length < 3 && inputValue.length > 0) {
+        validationMessage.textContent = 'Nama komoditas terlalu pendek.';
+      } else if (inputValue.length > 3) {
+        validationMessage.textContent = 'Nama komoditas valid. (onchange)';
+      } else {
+        validationMessage.textContent = '';
+      }
+    });
+
+    // Logika Tambahan untuk Edit 
+    // Cek apakah ini mode edit dari URL
+    document.addEventListener('DOMContentLoaded', function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const editName = urlParams.get('edit');
+        
+        if (editName) {
+            document.getElementById('form-title').textContent = `Edit Komoditas: ${editName}`;
+            document.getElementById('categories').value = editName;
+            // Di aplikasi nyata, kita akan fetch data komoditas ini
+            // dan mengisi semua field
+        }
+    });
+
+    // Fungsi simpan (dummy)
+    function saveForm() {
+        const categoryName = document.getElementById('categories').value;
+        alert(`Data ${categoryName} (pura-pura) berhasil disimpan!`);
+        window.location.href = 'categories.html'; // Kembali ke daftar
+    }
+
+  </script>
+</body>
+</html>
