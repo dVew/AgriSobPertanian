@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="../assets/logo.png" />
+    <link rel="stylesheet" href="../css/admin.css" />
+    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agrisob | Transaction</title>
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="logo-details"><i class="bx bxs-dashboard"></i><span class="logo_name">Agrisob</span></div>
+        <ul class="nav-links">
+            <li><a href="../admin.php"><i class="bx bx-grid-alt"></i><span class="links_name">Dashboard</span></a></li>
+            <li><a href="../categories/categories.php"><i class="bx bx-box"></i><span class="links_name">Categories</span></a></li>
+            <li><a href="transaction.php" class="active"><i class="bx bx-list-ul"></i><span class="links_name">Transaction</span></a></li>
+            <li><a href="../index.php"><i class="bx bx-log-out"></i><span class="links_name">Log out</span></a></li>
+        </ul>
+    </div>
+    <section class="home-section">
+        <nav>
+            <div class="sidebar-button"><i class="bx bx-menu sidebarBtn"></i></div>
+            <div class="profile-details">
+                <span class="admin_name" id="admin-name">Agrisob Admin</span>
+            </div>
+        </nav>
+        <div class="home-content">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Riwayat Transaksi Panen</h3>
+                </div>
+                <div class="item-list">
+                    <div class="item">
+                        <div class="item-details">
+                            <h5>Petani: Budi Santoso</h5>
+                            <p>Komoditas: Padi</p>
+                            <p class="date">Tanggal: 12-10-2025</p>
+                        </div>
+                        <div class="action-buttons">
+                            <span class="status success">Success</span>
+                            <button class="btn-detail">Detail</button>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item-details">
+                            <h5>Petani: Citra Lestari</h5>
+                            <p>Komoditas: Jagung</p>
+                            <p class="date">Tanggal: 11-10-2025</p>
+                        </div>
+                        <div class="action-buttons">
+                            <span class="status success">Success</span>
+                            <button class="btn-detail">Detail</button>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item-details">
+                            <h5>Petani: Eko Wijoyo</h5>
+                            <p>Komoditas: Cabai Merah</p>
+                            <p class="date">Tanggal: 10-10-2025</p>
+                        </div>
+                        <div class="action-buttons">
+                            <span class="status expire">Expired</span>
+                            <button class="btn-detail">Detail</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <script>
+        let sidebar = document.querySelector(".sidebar");
+        let sidebarBtn = document.querySelector(".sidebarBtn");
+        sidebarBtn.onclick = () => sidebar.classList.toggle("active");
+
+        const adminNameElement = document.getElementById('admin-name');
+        document.addEventListener('DOMContentLoaded', () => {
+            let savedName = localStorage.getItem('agrisobAdminName');
+            if (savedName) {
+                adminNameElement.textContent = savedName;
+            }
+        });
+    </script>
+</body>
+</html>
