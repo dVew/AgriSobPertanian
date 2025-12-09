@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="assets/logo.png" />
+  <title>Agrisob — Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <nav id="navbar">
+        <div class="logo">
+          <a href="index.php"><img src="assets/logo.png" alt="Agrisob logo" style="height:64px" /></a>
+        </div>
+        <input type="checkbox" id="click" />
+        <label for="click" class="menu-btn">
+          <i class="fas fa-bars"></i>
+        </label>
+        <ul>
+          <li><a href="index.php">Home</a></li>
+          <li><a href="login.php">Categories</a></li>
+          <li><a href="login.php" class="btn_login">Login</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <div class="jumbotron-bg">
+        <div class="jumbotron-text">
+          <h1 id="jumbotron-title">Agrisob — Dukung Pertanian Modern</h1>
+          <p>Kelola komoditas, catat panen, dan pantau transaksi dalam satu platform terintegrasi yang mudah digunakan.</p>
+          <button type="button" class="btn_getStarted" onclick="showToast('Terima kasih telah bergabung!')">Get Started</button>
+        </div>
+      </div>
+
+      <div class="cards-categories">
+        <h2>Komoditas Unggulan Kami</h2>
+        <div class="card-grid">
+          <div class="card">
+            <div class="card-image">
+              <img src="assets/gambar1.png" alt="padi" />
+            </div>
+            <div class="card-content">
+              <h5>Padi IR64</h5>
+              <p class="description">Varietas padi unggul, cocok untuk sawah irigasi teknis dengan potensi hasil tinggi.</p>
+              <p class="price"><span>Rp</span> 12.000 / kg</p>
+              <button class="btn_belanja" type="button" onclick="showToast('Silakan login untuk detail')">Lihat Detail</button>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-image">
+              <img src="assets/gambar2.png" alt="jagung" />
+            </div>
+            <div class="card-content">
+              <h5>Jagung Manis</h5>
+              <p class="description">Komoditas palawija dengan permintaan pasar yang stabil dan nilai jual yang menarik.</p>
+              <p class="price"><span>Rp</span> 8.000 / kg</p>
+              <button class="btn_belanja" type="button" onclick="showToast('Silakan login untuk detail')">Lihat Detail</button>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-image">
+              <img src="assets/gambar3.png" alt="cabai" />
+            </div>
+            <div class="card-content">
+              <h5>Cabai Merah Keriting</h5>
+              <p class="description">Komoditas hortikultura bernilai tinggi yang banyak dibutuhkan industri kuliner.</p>
+              <p class="price"><span>Rp</span> 30.000 / kg</p>
+              <button class="btn_belanja" type="button" onclick="showToast('Silakan login untuk detail')">Lihat Detail</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <h4>&copy; Agrisob 2025</h4>
+    </footer>
+  </div>
+
+  <div id="snackbar"></div>
+
+  <script>
+    function showToast(message) {
+      var snackbar = document.getElementById("snackbar");
+      snackbar.innerHTML = `<i class='bx bxs-check-circle'></i> ${message}`;
+      snackbar.className = "show";
+      setTimeout(function(){ snackbar.className = snackbar.className.replace("show", ""); }, 3000);
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const jumbotronTitle = document.getElementById('jumbotron-title');
+        jumbotronTitle.innerHTML = "Selamat Datang di Agrisob!";
+
+        const navbar = document.querySelector('#navbar');
+        window.onscroll = function() {
+            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+                navbar.style.backgroundColor = "#ffffff";
+                navbar.style.boxShadow = "0 2px 5px rgba(0,0,0,0.1)";
+            } else {
+                navbar.style.backgroundColor = "transparent";
+                navbar.style.boxShadow = "none";
+            }
+        };
+
+        const firstCard = document.querySelector('.card');
+        if (firstCard) {
+            const newBadge = document.createElement('span');
+            newBadge.textContent = 'Terbaru';
+            newBadge.style.position = 'absolute';
+            newBadge.style.top = '15px';
+            newBadge.style.left = '15px';
+            newBadge.style.backgroundColor = '#2f855a';
+            newBadge.style.color = 'white';
+            newBadge.style.padding = '5px 10px';
+            newBadge.style.borderRadius = '5px';
+            newBadge.style.fontSize = '12px';
+            newBadge.style.fontWeight = 'bold';
+            
+            firstCard.style.position = 'relative'; 
+            firstCard.appendChild(newBadge);
+        }
+    });
+  </script>
+
+</body>
+</html>
